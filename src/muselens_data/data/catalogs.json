@@ -1,0 +1,80 @@
+[
+ {
+  "name": "musewide_dr1_main",
+  "filename": "MW_44fields_main_table_v1.0.fits",
+  "url": "https://musewide.aip.de/files/dr1/MW_44fields_main_table_v1.0.fits",
+  "hash": "file_sha256",
+  "sha256": "508471b41b6737a3deee0967f5d684158ae4e232d192adcea0825594e07eb52b",
+  "reference": "Urrutia et al. 2019, A&A 624, A141"
+ },
+ {
+  "name": "musewide_dr1_emline",
+  "filename": "MW_44fields_emline_table_v1.0.fits",
+  "url": "https://musewide.aip.de/files/dr1/MW_44fields_emline_table_v1.0.fits",
+  "hash": "file_sha256",
+  "sha256": "2eff6a65b7a50caf17af8c0e4b3349330fa458e704143d1e6e0f5f6a200320de",
+  "reference": "Urrutia et al. 2019, A&A 624, A141"
+ },
+ {
+  "name": "vanderwel2012_table2",
+  "filename": "vanderwel2012_table2.dat.gz",
+  "url": "https://cdsarc.cds.unistra.fr/ftp/J/ApJS/203/24/table2.dat.gz",
+  "hash": "file_sha256",
+  "sha256": "28ebfbb20084a77cf8400db41b8f8069dafeb2d400b106241c02db6201062721",
+  "reference": "van der Wel et al. 2012, ApJS 203, 24 (GALFIT H-band morphology)"
+ },
+ {
+  "name": "vanderwel2012_readme",
+  "filename": "vanderwel2012_ReadMe",
+  "url": "https://cdsarc.cds.unistra.fr/ftp/J/ApJS/203/24/ReadMe",
+  "hash": "file_sha256",
+  "sha256": "4f479484e82334ee16ea77b5b32b915e234e302c3419ece31baa5009df959e67",
+  "reference": "VizieR J/ApJS/203/24"
+ },
+ {
+  "name": "santini2015_goodss",
+  "filename": "santini2015_goodss.tsv",
+  "url": "https://vizier.cds.unistra.fr/viz-bin/asu-tsv?-source=J/ApJ/801/97/goodss&-out.max=unlimited&-out=Seq,RAJ2000,DEJ2000,Hmag,zbest,M,Mneb,M2at",
+  "hash": "data_lines_sha256",
+  "sha256": "2eb71aa473d721177a44799dee44ef81f0d0141e56484b022294d9094d904027",
+  "reference": "Santini et al. 2015, ApJ 801, 97 (stellar masses)"
+ },
+ {
+  "name": "skelton2014_goodss",
+  "filename": "skelton2014_goodss.tsv",
+  "url": "https://vizier.cds.unistra.fr/viz-bin/asu-tsv?-source=J/ApJS/214/24/3dhstall&-out.max=200000&-out=ID,Field,RAJ2000,DEJ2000,zsp,zpk,F814W,e_F814W,F160W,e_F160W,Use,St,logM,Av&Field=GOODS-S&-c=53.10%20-27.81&-c.rm=20",
+  "hash": "data_lines_sha256",
+  "sha256": "569b7b0288fec836960c52b2fc2d6e67959be5b0869a75a2af47323952988b01",
+  "reference": "Skelton et al. 2014, ApJS 214, 24 (3D-HST photometry)"
+ },
+ {
+  "name": "hudf_dr2_main",
+  "filename": "hudf_dr2_main.csv",
+  "url": "https://tapvizier.cds.unistra.fr/TAPVizieR/tap/sync",
+  "params": {
+   "REQUEST": "doQuery",
+   "LANG": "ADQL",
+   "FORMAT": "csv",
+   "MAXREC": "1000000",
+   "QUERY": "SELECT * FROM \"J/A+A/670/A4/dr2-main\""
+  },
+  "hash": "file_sha256",
+  "sha256": "da867f49a4e707ddac3455d4fbd9cc5c18aa45fda06b4894abb331cd06ccfda8",
+  "reference": "Bacon et al. 2023, A&A 670, A4"
+ },
+ {
+  "name": "hudf_dr2_lines",
+  "filename": "hudf_dr2_lines.csv",
+  "url": "https://tapvizier.cds.unistra.fr/TAPVizieR/tap/sync",
+  "params": {
+   "REQUEST": "doQuery",
+   "LANG": "ADQL",
+   "FORMAT": "csv",
+   "MAXREC": "1000000",
+   "QUERY": "SELECT ID,DataSet,LineSet,Line,IsBlend,DName,Flux,e_Flux,SNR,z,Vdisp,FWHMObs,lambdaObs FROM \"J/A+A/670/A4/dr2lines\""
+  },
+  "hash": "file_sha256",
+  "sha256": "01ff2a9567665d1627dab97d153bf80331539a711433dfa7aecad7b3e9fa1b97",
+  "reference": "Bacon et al. 2023, A&A 670, A4"
+ }
+]

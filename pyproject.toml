@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "muselens_data"
+version = "1.0.0"
+description = "Data access for the MUSElens kinematic lensing analysis: targets, HST F814W and MUSE cutouts, PSF, WCS, masks"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "astropy>=5.3",
+    "requests>=2.28",
+    "sep>=1.2",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[project.scripts]
+muselens-data = "muselens_data.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+muselens_data = ["data/*.json", "data/masks/*.npz"]
+
