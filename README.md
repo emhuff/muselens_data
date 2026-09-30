@@ -21,9 +21,22 @@ and ships, inside the package (2.8 MB):
 - `data/manifest.json`: content hashes of every file MUSElens used.
 - The PSF and LSF tables (`psf.py`).
 
-## Install and fetch
+## Install
 
-    pip install -e .            # or: pip install -e '.[test]'
+Requires Python >= 3.10. pip installs every dependency (numpy, scipy, astropy, requests, sep) from
+`pyproject.toml`; nothing else is needed. From the repository root, in a fresh virtual environment:
+
+    python3 -m venv .venv
+    source .venv/bin/activate          # Windows: .venv\Scripts\activate
+    pip install -e '.[test]'           # '.[test]' adds pytest; plain '.' for the package only
+    pytest tests/test_offline.py       # check the install (no data needed)
+
+sep is the only compiled dependency. PyPI has prebuilt wheels for common macOS, Linux and Windows
+platforms; elsewhere pip builds it from source and needs a C compiler. Tested with Python 3.11, numpy 1.26,
+scipy 1.17, astropy 7.2, requests 2.34, sep 1.4.
+
+## Fetch
+
     muselens-data fetch /path/to/data                      # all 366 targets + catalogues, ~12 GB
     muselens-data fetch /path/to/data --subset production  # the 128 production rotators
     muselens-data fetch /path/to/data --ids 101002010 900000863
