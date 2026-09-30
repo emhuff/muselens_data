@@ -31,6 +31,14 @@ PRODUCTION_RUN = 'experiments/population/runs/shear_hann_poolpsf_th8'
 MUSE_FETCH_HALFWIDTH = 250.0   # [A] scripts/fit_kinematic_cosi.py
 MUSEWIDE_FULL = (4750.0, 9350.0)
 TAP = 'https://tapvizier.cds.unistra.fr/TAPVizieR/tap/sync'
+# MUSE-Wide cubes that were not requested at the pool position. The cutout grid depends on the requested position,
+# so these need their own. Each override was found by refetching and is byte-identical to the MUSElens file.
+MUSE_POSITION_OVERRIDES: dict[str, tuple[float, float, str]] = {
+    '102030136': (53.05962049148014, -27.822399306831272,
+                  'fetched 2026-03-27 by pre-git MUSE-Wide code at an unrecorded position; at the pool position the '
+                  'server returns a grid shifted one spaxel (0.2 arcsec) in Dec. This position (the sky position of '
+                  'pixel (30, 30) of the MUSElens cube) reproduces the file byte for byte (checked 2026-09-30).'),
+}
 
 
 def vizier_request(path: Path) -> str:
@@ -57,11 +65,17 @@ def muse_request(t: dict, cube: Path) -> dict:
         lam = REST_WAVELENGTH[t['line']] * (1 + t['redshift'])
         l0 = float(f'{max(lam - MUSE_FETCH_HALFWIDTH, MUSEWIDE_FULL[0]):.0f}')
         l1 = float(f'{min(lam + MUSE_FETCH_HALFWIDTH, MUSEWIDE_FULL[1]):.0f}')
+    ra, dec, note = t['ra'], t['dec'], None
+    if gid in MUSE_POSITION_OVERRIDES:
+        ra, dec, note = MUSE_POSITION_OVERRIDES[gid]
     wave_end = crval + (n - 1) * h1['CD3_3']
     if not (abs(crval - l0) <= 2.5 and abs(wave_end - l1) <= 2.5):  # server snaps to the native 1.25 A grid
         raise ValueError(f'{gid}: cube spans {crval:.2f}-{wave_end:.2f} A, request {l0}-{l1}')
-    return {'service': 'musewide_api', 'ra': t['ra'], 'dec': t['dec'], 'box_arcsec': 6, 'l0': l0, 'l1': l1,
-            'url': MUSEWIDE_CUTOUT_URL.format(ra=t['ra'], dec=t['dec'], box=6, l0=l0, l1=l1)}
+    req = {'service': 'musewide_api', 'ra': ra, 'dec': dec, 'box_arcsec': 6, 'l0': l0, 'l1': l1,
+           'url': MUSEWIDE_CUTOUT_URL.format(ra=ra, dec=dec, box=6, l0=l0, l1=l1)}
+    if note is not None:
+        req['note'] = note
+    return req
 
 
 def phase1_block(rec: dict, t: dict) -> dict:

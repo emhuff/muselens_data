@@ -104,6 +104,9 @@ compares all 358 with the frozen production masks; on the MUSElens files they ag
 
 - The MUSE-Wide cubes do not share a wavelength range: 227 are +/- 250 A windows (clipped at the MUSE range edge where needed) and 63 are full range,
   because MUSElens fetched them at different times. The requests in `targets.json` reproduce each one.
+- One MUSE-Wide cube (102030136) was fetched in March 2026 by code whose request position was not recorded. At
+  the catalogue position the server returns a grid shifted by one spaxel, so its request uses a position that
+  reproduces the file exactly (`request.muse.note` in `targets.json`).
 - 8 targets have no production fit (`in_phase1` false) and therefore no frozen mask.
 - Selection flags are informational; nothing here applies a selection.
 - `tools/freeze_from_muselens.py` built the package data from the MUSElens working copy on 2026-09-30. It is

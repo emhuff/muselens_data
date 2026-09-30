@@ -7191,12 +7191,13 @@
    },
    "muse": {
     "service": "musewide_api",
-    "ra": 53.05961847881997,
-    "dec": -27.822399521176465,
+    "ra": 53.05962049148014,
+    "dec": -27.822399306831272,
     "box_arcsec": 6,
     "l0": 4750.0,
     "l1": 9350.0,
-    "url": "https://musewide.aip.de/cutout/api/datacubes/?RA=53.059618&A=6&DEC=-27.822400&B=6&L0=4750&L1=9350"
+    "url": "https://musewide.aip.de/cutout/api/datacubes/?RA=53.059620&A=6&DEC=-27.822399&B=6&L0=4750&L1=9350",
+    "note": "fetched 2026-03-27 by pre-git MUSE-Wide code at an unrecorded position; at the pool position the server returns a grid shifted one spaxel (0.2 arcsec) in Dec. This position (the sky position of pixel (30, 30) of the MUSElens cube) reproduces the file byte for byte (checked 2026-09-30)."
    }
   },
   "phase1": {
